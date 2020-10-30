@@ -39,59 +39,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="end">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="@string/sin"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:text="@string/degree"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_16sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"/>
 
-        <TextView
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/degreeSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="@string/cos"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="@string/tan"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="@string/log"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:onClick="radianToDegree"/>
 
     </LinearLayout>
 
@@ -101,56 +66,123 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/sin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="sinPressed"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="@string/sin"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/cos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="cosPressed"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="@string/cos"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_20sdp" />
+
+        <TextView
+            android:id="@+id/tan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="tanPressed"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="@string/tan"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_20sdp" />
+
+        <TextView
+            android:id="@+id/log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="logPressed"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="@string/log"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_20sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="rootPressed"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:text="@string/root"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:textSize="@dimen/_20sdp" />
 
         <TextView
+            android:id="@+id/mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="modPressed"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:text="@string/mod"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:textSize="@dimen/_20sdp" />
 
         <TextView
+            android:id="@+id/aToB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="aToBPressed"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:text="@string/a_power_b"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:textSize="@dimen/_20sdp" />
 
         <TextView
+            android:id="@+id/tenToX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="tenToXPressed"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:text="@string/ten_x"
-            android:textSize="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:onClick="sevenPressed"/>
+            android:textSize="@dimen/_20sdp" />
 
     </LinearLayout>
 
@@ -414,7 +446,7 @@
         android:textSize="@dimen/_30sdp"
         android:textColor="@color/colorPrimaryDark"
         android:background="@color/colorPrimary"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         android:gravity="center"

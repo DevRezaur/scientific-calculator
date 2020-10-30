@@ -25,4 +25,5 @@
     <string name="tan">tan</string>
     <string name="ten_x">10^x</string>
     <string name="log">log</string>
+    <string name="degree">Degree</string>
 </resources>
