@@ -46,13 +46,21 @@ public class MainActivity extends AppCompatActivity {
         minusFlag = false;
         multiplyFlag = false;
         divideFlag = false;
-        ansFlag = false;
+        rootFlag = false;
+        modFlag = false;
+        aToBFlag = false;
+        tenToXFlag = false;
+        sinFlag = false;
+        cosFlag = false;
+        tanFlag = false;
+        logFlag = false;
     }
 
     public void clearMethod(View view) {
         mainPanel.setText("");
         subPanel.setText("");
         falseAllFlag();
+        ansFlag = false;
     }
 
     public void plusMethod(View view) {
@@ -62,10 +70,16 @@ public class MainActivity extends AppCompatActivity {
             falseAllFlag();
         }
         if(!mainPanel.getText().toString().equals("")) {
-            plusFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "+");
-            mainPanel.setText("");
+            try {
+                plusFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "+");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         }
     }
 
@@ -74,12 +88,19 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("") && !mainPanel.getText().toString().equals("-")) {
-            minusFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "-");
-            mainPanel.setText("");
+            try {
+                minusFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "-");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         } else {
             mainPanel.setText(mainPanel.getText().toString() + "-");
         }
@@ -90,12 +111,19 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("")) {
-            multiplyFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "*");
-            mainPanel.setText("");
+            try {
+                multiplyFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "*");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         }
     }
 
@@ -104,105 +132,117 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("")) {
-            divideFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "/");
-            mainPanel.setText("");
+            try {
+                divideFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "/");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         }
     }
 
     public void equalMethod(View view) {
         if(!mainPanel.getText().toString().equals("")) {
-            if (plusFlag) {
+            try {
+                if (plusFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((firstNumber + secondNumber) + "");
+                    plusFlag = false;
+                } else if (minusFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((firstNumber - secondNumber) + "");
+                    minusFlag = false;
+                } else if (multiplyFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((firstNumber * secondNumber) + "");
+                    multiplyFlag = false;
+                } else if (divideFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((firstNumber / secondNumber) + "");
+                    divideFlag = false;
+                } else if (rootFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(1));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((Math.sqrt(firstNumber)) + "");
+                    rootFlag = false;
+                } else if (modFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((firstNumber % secondNumber) + "");
+                    modFlag = false;
+                } else if (aToBFlag) {
+                    ansFlag = true;
+                    secondNumber = new Double(mainPanel.getText().toString());
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((Math.pow(firstNumber, secondNumber)) + "");
+                    aToBFlag = false;
+                } else if (tenToXFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(3));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((Math.pow(10, firstNumber)) + "");
+                    tenToXFlag = false;
+                } else if (sinFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(4));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    if(degreeSwitch.isChecked())
+                        mainPanel.setText((Math.sin(firstNumber * Math.PI/180)) + "");
+                    else
+                        mainPanel.setText((Math.sin(firstNumber)) + "");
+                    sinFlag = false;
+                } else if (cosFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(4));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    if(degreeSwitch.isChecked())
+                        mainPanel.setText((Math.cos(firstNumber * Math.PI/180)) + "");
+                    else
+                        mainPanel.setText((Math.cos(firstNumber)) + "");
+                    cosFlag = false;
+                } else if (tanFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(4));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    if(degreeSwitch.isChecked())
+                        mainPanel.setText((Math.tan(firstNumber * Math.PI/180)) + "");
+                    else
+                        mainPanel.setText((Math.tan(firstNumber)) + "");
+                    tanFlag = false;
+                } else if (logFlag) {
+                    ansFlag = true;
+                    firstNumber = new Double(mainPanel.getText().toString().substring(4));
+                    subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
+                    mainPanel.setText((Math.log10(firstNumber)) + "");
+                    logFlag = false;
+                } else {
+                    ansFlag = true;
+                    subPanel.setText(mainPanel.getText().toString());
+                }
+            } catch (Exception e) {
                 ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((firstNumber + secondNumber) + "");
-                plusFlag = false;
-            } else if (minusFlag) {
-                ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((firstNumber - secondNumber) + "");
-                minusFlag = false;
-            } else if (multiplyFlag) {
-                ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((firstNumber * secondNumber) + "");
-                multiplyFlag = false;
-            } else if (divideFlag) {
-                ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((firstNumber / secondNumber) + "");
-                divideFlag = false;
-            } else if (rootFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(1));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((Math.sqrt(firstNumber)) + "");
-                rootFlag = false;
-            } else if (modFlag) {
-                ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((firstNumber % secondNumber) + "");
-                modFlag = false;
-            } else if (aToBFlag) {
-                ansFlag = true;
-                secondNumber = new Double(mainPanel.getText().toString());
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((Math.pow(firstNumber, secondNumber)) + "");
-                aToBFlag = false;
-            } else if (tenToXFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(3));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((Math.pow(10, firstNumber)) + "");
-                tenToXFlag = false;
-            } else if (sinFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(4));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                if(degreeSwitch.isChecked())
-                    mainPanel.setText((Math.sin(firstNumber * Math.PI/180)) + "");
-                else
-                    mainPanel.setText((Math.sin(firstNumber)) + "");
-                sinFlag = false;
-            } else if (cosFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(4));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                if(degreeSwitch.isChecked())
-                    mainPanel.setText((Math.cos(firstNumber * Math.PI/180)) + "");
-                else
-                    mainPanel.setText((Math.cos(firstNumber)) + "");
-                cosFlag = false;
-            } else if (tanFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(4));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                if(degreeSwitch.isChecked())
-                    mainPanel.setText((Math.tan(firstNumber * Math.PI/180)) + "");
-                else
-                    mainPanel.setText((Math.tan(firstNumber)) + "");
-                tanFlag = false;
-            } else if (logFlag) {
-                ansFlag = true;
-                firstNumber = new Double(mainPanel.getText().toString().substring(4));
-                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString());
-                mainPanel.setText((Math.log10(firstNumber)) + "");
-                logFlag = false;
-            }
-            else {
-                ansFlag = true;
-                subPanel.setText(mainPanel.getText().toString());
+                falseAllFlag();
+                mainPanel.setText("Syntax Error");
             }
         } else {
-            Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Invalid Input",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -211,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(mainPanel.getText().toString().equals(""))
             mainPanel.setText("0.");
@@ -223,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "0");
     }
@@ -232,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "1");
     }
@@ -241,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "2");
     }
@@ -250,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "3");
     }
@@ -259,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "4");
     }
@@ -268,6 +314,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "5");
     }
@@ -277,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "6");
     }
@@ -286,6 +334,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "7");
     }
@@ -295,6 +344,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "8");
     }
@@ -304,6 +354,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         mainPanel.setText(mainPanel.getText().toString() + "9");
     }
@@ -313,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("sin ")) {
             sinFlag = true;
@@ -325,6 +377,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("cos ")) {
             cosFlag = true;
@@ -337,6 +390,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("tan ")) {
             tanFlag = true;
@@ -349,6 +403,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("log ")) {
             logFlag = true;
@@ -361,6 +416,7 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("√")) {
             rootFlag = true;
@@ -373,12 +429,19 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("")) {
-            modFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "%");
-            mainPanel.setText("");
+            try {
+                modFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "%");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         }
     }
 
@@ -387,12 +450,19 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
         if(!mainPanel.getText().toString().equals("")) {
-            aToBFlag = true;
-            firstNumber = new Double(mainPanel.getText().toString());
-            subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "^");
-            mainPanel.setText("");
+            try {
+                aToBFlag = true;
+                firstNumber = new Double(mainPanel.getText().toString());
+                subPanel.setText(subPanel.getText().toString() + mainPanel.getText().toString() + "^");
+                mainPanel.setText("");
+            } catch (Exception e) {
+                ansFlag = true;
+                mainPanel.setText("Syntax Error");
+                falseAllFlag();
+            }
         }
     }
 
@@ -401,22 +471,29 @@ public class MainActivity extends AppCompatActivity {
             mainPanel.setText("");
             subPanel.setText("");
             falseAllFlag();
+            ansFlag = false;
         }
-        if(!mainPanel.getText().toString().equals("10^55")) {
+        if(!mainPanel.getText().toString().equals("10^")) {
             tenToXFlag = true;
             mainPanel.setText("10^");
         }
     }
 
     public void radianToDegree(View view) {
-        if(ansFlag && !degreeFlag) {
-            degreeFlag = true;
-            Double temp = new Double(mainPanel.getText().toString());
-            mainPanel.setText((temp * (Math.PI/180)) + "");
-        } else if(ansFlag && degreeFlag) {
-            degreeFlag = false;
-            Double temp = new Double(mainPanel.getText().toString());
-            mainPanel.setText((temp / (Math.PI/180)) + "");
+        try {
+            if(ansFlag && !degreeFlag) {
+                degreeFlag = true;
+                Double temp = new Double(mainPanel.getText().toString());
+                mainPanel.setText((temp * (Math.PI/180)) + "");
+            } else if(ansFlag && degreeFlag) {
+                degreeFlag = false;
+                Double temp = new Double(mainPanel.getText().toString());
+                mainPanel.setText((temp / (Math.PI/180)) + "");
+            }
+        } catch (Exception e) {
+            ansFlag = true;
+            mainPanel.setText("Syntax Error");
+            falseAllFlag();
         }
     }
 }
