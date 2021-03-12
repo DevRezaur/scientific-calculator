@@ -4,27 +4,29 @@ Simple scientific calculator app submitted by me. It was submitted as my academi
 
 ### Below are some screenshots of the app
 
-![Screenshot 1](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Sum.jpg)
+---
+
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Sum.jpg" width="300" />
 
 ---
 
-![Screenshot 2](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/X%5EY.jpg)
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/X%5EY.jpg" width="300" />
 
 ---
 
-![Screenshot 3](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Sin.jpg)
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Sin.jpg" width="300" />
 
 ---
 
-![Screenshot 4](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Root.jpg)
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Root.jpg" width="300" />
 
 ---
 
-![Screenshot 5](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Division%20By%20Zero.jpg)
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Division%20By%20Zero.jpg" width="300" />
 
 ---
 
-![Screenshot 6](https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Syntax%20Error%201.jpg)
+<img src="https://raw.githubusercontent.com/DevRezaur/scientific-calculator/main/screenshots/Syntax%20Error%201.jpg" width="300" />
 
 ---
 
